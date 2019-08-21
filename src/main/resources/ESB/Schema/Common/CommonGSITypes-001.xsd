@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.gema.de/ESB/Schema/Common/CommonGSITypes-001"
+            xmlns:commonTypes="http://www.gema.de/ESB/Schema/Common/CommonGSITypes-001"
+            xmlns:prim="http://www.gema.de/ESB/Schema/Common/PrimitiveBaseTypes-001"
+            targetNamespace="http://www.gema.de/ESB/Schema/Common/CommonGSITypes-001">
+	  <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema"
+              namespace="http://www.gema.de/ESB/Schema/Common/PrimitiveBaseTypes-001"
+              schemaLocation="PrimitiveBaseTypes-001.xsd"/>
+	  <xsd:simpleType name="CompositeType">
+		    <xsd:annotation>
+			      <xsd:documentation>Composite type.
+Indicates if the work is a main composite or part of another composite (FS19).</xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="NONE">
+				        <xsd:annotation>
+					          <xsd:documentation>NONE- neither main composite nor related</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="RELD">
+				        <xsd:annotation>
+					          <xsd:documentation>work is related to a main composite</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="REGC">
+				        <xsd:annotation>
+					          <xsd:documentation> work is a regular composite</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="INDC">
+				        <xsd:annotation>
+					          <xsd:documentation>work is an indexing composite</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="POTP">
+				        <xsd:annotation>
+					          <xsd:documentation>work is a Potpourri</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="None"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="CopyrightStatusOfCompostion">
+		    <xsd:annotation>
+			      <xsd:documentation>Status of composition enumeration.</xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="protected"/>
+			      <xsd:enumeration value="unprotected"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="DistributionCategory">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="DK">
+				        <xsd:annotation>
+					          <xsd:documentation>mechanische Musikwiedergabe in Diskotheken</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="DK_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Diskotheken Vervielfältigungsrecht</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="E">
+				        <xsd:annotation>
+					          <xsd:documentation>Ernste Musik</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="BM">
+				        <xsd:annotation>
+					          <xsd:documentation>Bühnenmusik</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="EM">
+				        <xsd:annotation>
+					          <xsd:documentation>E-Musikaufführungen mittels mech. Vorr.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="ED">
+				        <xsd:annotation>
+					          <xsd:documentation>E-Musik Direktverrechnung</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="KI_EK">
+				        <xsd:annotation>
+					          <xsd:documentation>Musik im evang. Gottesdienst</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="KI_KK">
+				        <xsd:annotation>
+					          <xsd:documentation>Musik im kath. Gottesdienst</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="FKI_EK">
+				        <xsd:annotation>
+					          <xsd:documentation> funktionelle Musikwiedergabe im evang. G.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="FKI_KK">
+				        <xsd:annotation>
+					          <xsd:documentation>funktionelle Musikwiedergabe im kath. G.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="KI_NA">
+				        <xsd:annotation>
+					          <xsd:documentation>Musik im neu-apost. Gottesdienst</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="R">
+				        <xsd:annotation>
+					          <xsd:documentation>Tonrundfunk</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="R_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht im Hörfunk</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="R_GR">
+				        <xsd:annotation>
+					          <xsd:documentation>Hörfunk mit Werken Großen Rechts</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="R_VR_GR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht Hörfunk Gr. Recht</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="FS">
+				        <xsd:annotation>
+					          <xsd:documentation>Fernsehrundfunk</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="FS_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungrecht im FS</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="FS_GR">
+				        <xsd:annotation>
+					          <xsd:documentation>FS mit Werken Großen Rechts</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="T">
+				        <xsd:annotation>
+					          <xsd:documentation> Tonfilm</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="TD">
+				        <xsd:annotation>
+					          <xsd:documentation>Tonfilm-Direktverrechnung</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="T_FS">
+				        <xsd:annotation>
+					          <xsd:documentation>Tonfilm im Fernsehen</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="T_FS_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht T FS</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="TD_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht TD</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="U">
+				        <xsd:annotation>
+					          <xsd:documentation>Unterhaltungs- und Tanzmusik</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="M">
+				        <xsd:annotation>
+					          <xsd:documentation> Tonträgerwiedergabe von Unterhaltungsmusik</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="UD">
+				        <xsd:annotation>
+					          <xsd:documentation>U-Musik Direktverrechnung</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="MOD_D">
+				        <xsd:annotation>
+					          <xsd:documentation>Music-on-Demand (Downloading)</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="MOD_D_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht MOD D</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="MOD_S">
+				        <xsd:annotation>
+					          <xsd:documentation>Music-on-Demand (Streaming)</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="MOD_S_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht MOD S</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="VOD_D">
+				        <xsd:annotation>
+					          <xsd:documentation>Video-on-Demand (Downloading)</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="VOD_D_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht VOD D</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="VOD_S">
+				        <xsd:annotation>
+					          <xsd:documentation>Video-on-Demand (Streaming)</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="VOD_S_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht VOD S</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="PHO_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht Tonträger</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="BT_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht Bildtonträger</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="WEB">
+				        <xsd:annotation>
+					          <xsd:documentation>Websites (Streaming)</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="WEB_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht WEB</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="KMOD">
+				        <xsd:annotation>
+					          <xsd:documentation>Ruftonmelodien</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="KMOD_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Vervielfältigungsrecht Ruftonmelodien</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="A_VR">
+				        <xsd:annotation>
+					          <xsd:documentation>Ausland Vervielfältigungsrecht</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="A_AR">
+				        <xsd:annotation>
+					          <xsd:documentation>Ausland Auffuehrungsrecht</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="GEMARoleCode">
+		    <xsd:annotation>
+			      <xsd:documentation>GEMA role codes.</xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="K">
+				        <xsd:annotation>
+					          <xsd:documentation>Komponist</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="KT">
+				        <xsd:annotation>
+					          <xsd:documentation>Komponist/Textdichter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="T">
+				        <xsd:annotation>
+					          <xsd:documentation>Textdichter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="TNA">
+				        <xsd:annotation>
+					          <xsd:documentation>NachTextdichter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="TNE">
+				        <xsd:annotation>
+					          <xsd:documentation>Neu-Textdicter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="OV">
+				        <xsd:annotation>
+					          <xsd:documentation>Originalverlag</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="SV">
+				        <xsd:annotation>
+					          <xsd:documentation>Sub-Verlag</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="B">
+				        <xsd:annotation>
+					          <xsd:documentation>B-Bearbeiter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="A">
+				        <xsd:annotation>
+					          <xsd:documentation>A-Bearbeiter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="TS">
+				        <xsd:annotation>
+					          <xsd:documentation>Spezialtextdichter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="ST">
+				        <xsd:annotation>
+					          <xsd:documentation>Sub-Textdichter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="SB">
+				        <xsd:annotation>
+					          <xsd:documentation>Sub-Bearbeiter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="PB">
+				        <xsd:annotation>
+					          <xsd:documentation>Potpourri-Bearbeiter</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="UNKNOWN">
+				        <xsd:annotation>
+					          <xsd:documentation>Used for due to technical implications of the mapping algorithm. Any interested party with this role indicates an error in mapping algorithm or in data provided by ICE. In either case, the calling application should throw an exception.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:complexType name="InterestedPartyInformation">
+		    <xsd:annotation>
+			      <xsd:documentation>The Interested Party Information system (IPI) contains the real and artistic names of the right holders, as well as their nationalities and place of birth for natural persons.</xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:sequence>
+			      <xsd:element name="ipiBaseNumber" type="prim:StringMax13" minOccurs="1" maxOccurs="1">
+				        <xsd:annotation>
+					          <xsd:documentation>The IPI Base Number is the code for an entity itself. It has the pattern H-NNNNNNNNN-C.
+
+    H: header (a single letter)
+    N: identification number (nine numeric digits)
+    C: check digit (a single number)
+
+Example of IP Base Number : I-000000229-7
+
+Mapping: L3.IPIBASENO</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:element>
+			      <xsd:element name="ipiNameNumber" type="prim:StringIntMax11" minOccurs="1" maxOccurs="1">
+				        <xsd:annotation>
+					          <xsd:documentation>The IP Name Number is the code for a name or pseudonym related to an entity (natural person or a legal entity). One entity can have several names. Prince for example has the IPI-codes 00045620792 (Nelson Prince Rogers), 00052210040 (Prince) and 00334284961 (Nelson Prince R).
+
+The IPI Name Number is composed of eleven numeric digits.
+
+Mapping: L3.IPINAMENBR</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:element>
+		    </xsd:sequence>
+	  </xsd:complexType>
+	  <xsd:simpleType name="LyricsAdaptationCode">
+		    <xsd:annotation>
+			      <xsd:documentation>Lyrics adaptation code enumeration.</xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="UNDEFINED">
+				        <xsd:annotation>
+					          <xsd:documentation>UNDEFINED lyrics adaptation code is not defined</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="ADL">
+				        <xsd:annotation>
+					          <xsd:documentation>Addition</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="REP">
+				        <xsd:annotation>
+					          <xsd:documentation>Replacement L</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="MOD">
+				        <xsd:annotation>
+					          <xsd:documentation>Modification</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="NEW">
+				        <xsd:annotation>
+					          <xsd:documentation>New</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="NON">
+				        <xsd:annotation>
+					          <xsd:documentation>None</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="ORI">
+				        <xsd:annotation>
+					          <xsd:documentation>Original</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="TRA">
+				        <xsd:annotation>
+					          <xsd:documentation>Translation</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="UNS">
+				        <xsd:annotation>
+					          <xsd:documentation>Unspecified</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NameType">
+		    <xsd:annotation>
+			      <xsd:documentation>Type of the name used by interested party.</xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="PA">
+				        <xsd:annotation>
+					          <xsd:documentation>Patronym (Publisher + Creator) - the primary current name by which the person is known   </xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="PP">
+				        <xsd:annotation>
+					          <xsd:documentation>Pseudonym (pseudonyms which the owner wishes to keep 
+secret are apparently treated as separate patronyms)   </xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="DF">
+				        <xsd:annotation>
+					          <xsd:documentation>Different presentation (Publisher + Creator) - Different spelling: entered by a participating agency</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="ST">
+				        <xsd:annotation>
+					          <xsd:documentation>Standardised name (Publisher + Creator) - Standardised spelling: a variant form entered by the IPI centre 
+to facilitate retrieval </xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="MO">
+				        <xsd:annotation>
+					          <xsd:documentation>Former name (Publisher + Creator)  - A former patronym changed eg by marriage.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="OR">
+				        <xsd:annotation>
+					          <xsd:documentation>Other reference (Publisher only) - Other reference: eg a publisher’s imprint or a record company 
+label</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="PG">
+				        <xsd:annotation>
+					          <xsd:documentation>Pseudonym Group (Creator only)</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="HR">
+				        <xsd:annotation>
+					          <xsd:documentation>Holding reference  - A group to which the legal entity belongs but which itself is not a registered rights owner.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:complexType name="ResponseStatus">
+		    <xsd:sequence>
+			      <xsd:element name="eaiExecutionDuration" type="prim:StringIntMax16" minOccurs="1"
+                      maxOccurs="1">
+				        <xsd:annotation>
+					          <xsd:documentation>Execution duration in microseconds for the current call in EAI. It includes EAI execution duration,  network round trip duration and execution duration in ICE.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:element>
+			      <xsd:element name="iceExecutionDuration" type="prim:StringIntMax16" minOccurs="1"
+                      maxOccurs="1">
+				        <xsd:annotation>
+					          <xsd:documentation>Execution duration in microseconds for the current call at ICE site.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:element>
+			      <xsd:element name="messageSeverity" type="prim:StringIntMax10" minOccurs="1" maxOccurs="1">
+				        <xsd:annotation>
+					          <xsd:documentation>Severity of returned message.
+
+0 means OK, 1 - 29 means Warning, 30 and above means Error</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:element>
+			      <xsd:element name="messageText" type="prim:StringMax500" minOccurs="1" maxOccurs="1">
+				        <xsd:annotation>
+					          <xsd:documentation>Brief textual description of the warning / error, if any.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:element>
+			      <xsd:element name="networkRoundTripDuration" type="prim:StringIntMax16" minOccurs="1"
+                      maxOccurs="1">
+				        <xsd:annotation>
+					          <xsd:documentation>Network roundtrip duration in microseconds for the current call.</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:element>
+			      <xsd:element name="requestTimestamp" type="xsd:string" minOccurs="1" maxOccurs="1">
+				        <xsd:annotation>
+					          <xsd:documentation>The timestamp when the request was issued. Set by service.
+Format: yyyy--mm-dd-HH-MM-ss
+Example: 2018-10-19-11-19-12</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:element>
+		    </xsd:sequence>
+	  </xsd:complexType>
+	  <xsd:simpleType name="RoleCode">
+		    <xsd:annotation>
+			      <xsd:documentation>Denotes the role of an IP within the Work. Codes values will be compliant with role codes defined within IPI Specification. </xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="A">
+				        <xsd:annotation>
+					          <xsd:documentation>Author, Writer, Lyricist</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="AD">
+				        <xsd:annotation>
+					          <xsd:documentation>Adaptor</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="AR">
+				        <xsd:annotation>
+					          <xsd:documentation>Arranger</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="C">
+				        <xsd:annotation>
+					          <xsd:documentation>Composer</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="E">
+				        <xsd:annotation>
+					          <xsd:documentation>Original Publisher</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="CA">
+				        <xsd:annotation>
+					          <xsd:documentation>Composer-Author combi role</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="SA">
+				        <xsd:annotation>
+					          <xsd:documentation>Sub-Author</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="SE">
+				        <xsd:annotation>
+					          <xsd:documentation>Sub-Publisher</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="SR">
+				        <xsd:annotation>
+					          <xsd:documentation>Sub-Arranger</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="TR">
+				        <xsd:annotation>
+					          <xsd:documentation>Translator</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="VersionType">
+		    <xsd:annotation>
+			      <xsd:documentation>Work Version Indicator.</xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="ORI">
+				        <xsd:annotation>
+					          <xsd:documentation>Original Work </xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="MOD">
+				        <xsd:annotation>
+					          <xsd:documentation>Modified version of a Work</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="WorkCategory">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="UNDEFINED">
+				        <xsd:annotation>
+					          <xsd:documentation>UNDEFINED - Work category does not apply</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="COS">
+				        <xsd:annotation>
+					          <xsd:documentation>Composite of Samples</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="MED">
+				        <xsd:annotation>
+					          <xsd:documentation>Medley</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="POT">
+				        <xsd:annotation>
+					          <xsd:documentation>Potpourri</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="UCO">
+				        <xsd:annotation>
+					          <xsd:documentation>Unspecified Composite</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="WorkReferenceType">
+		    <xsd:annotation>
+			      <xsd:documentation>Describes the type of the work reference used to identify the work. </xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="ISWC">
+				        <xsd:annotation>
+					          <xsd:documentation>International Standard Work Code (ISWC)</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="IWK">
+				        <xsd:annotation>
+					          <xsd:documentation>Ice Work Key (WKEY)</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="WWF">
+				        <xsd:annotation>
+					          <xsd:documentation>Society work reference Werk-Werkfassungsnummer (SWREF)</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="WorkStatus">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="1">
+				        <xsd:annotation>
+					          <xsd:documentation>Work Fully Documented</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="2">
+				        <xsd:annotation>
+					          <xsd:documentation>New Work Registered by Publisher</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="4">
+				        <xsd:annotation>
+					          <xsd:documentation>Un-notified Work</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+</xsd:schema>

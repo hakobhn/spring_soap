@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2016 (x64) (http://www.altova.com) von IT4IPM (IT4IPM GmbH) bearbeitet -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:base="http://www.gema.de/ESB/Service/Base/BaseAbstract-001.wsdl" xmlns:pi="http://www.gema.de/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteraction-001" xmlns:tns="http://www.gema.de/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteractionAbstract-001.wsdl" xmlns:ns="http://www.gema.de/ESB/Schema/Common/BaseTypes-001" xmlns:ns1="http://www.gema.de/ESB/Schema/Common/PrimitiveBaseTypes-001" name="PartnerInteraction" targetNamespace="http://www.gema.de/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteractionAbstract-001.wsdl">
+	<import namespace="http://www.gema.de/ESB/Service/Base/BaseAbstract-001.wsdl" location="../../../Base/BaseAbstract-001.wsdl"/>
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://www.gema.de/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteraction-001" schemaLocation="PartnerInteraction-001.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="createCRMTaskRequest">
+		<part name="createCRMTaskRequest" element="pi:createCRMTaskRequest"/>
+	</message>
+	<message name="createCRMTaskResponse">
+		<part name="createCRMTaskResponse" element="pi:createCRMTaskResponse"/>
+	</message>
+	<message name="createIncomingPostRequest">
+		<part name="createIncomingPostRequest" element="pi:createIncomingPostRequest"/>
+	</message>
+	<message name="createIncomingPostResponse">
+		<part name="createIncomingPostResponse" element="pi:createIncomingPostResponse"/>
+	</message>
+	<portType name="PartnerInteractionPortType">
+		<operation name="createCRMTask">
+			<input name="createCRMTaskRequest" message="tns:createCRMTaskRequest"/>
+			<output name="createCRMTaskResponse" message="tns:createCRMTaskResponse"/>
+			<fault name="systemESBException" message="base:systemESBException"/>
+			<fault name="businessESBException" message="base:businessESBException"/>
+			<fault name="validationESBException" message="base:validationESBException"/>
+		</operation>
+		<operation name="createIncomingPost">
+			<input name="createIncomingPostRequest" message="tns:createIncomingPostRequest"/>
+			<output name="createIncomingPostResponse" message="tns:createIncomingPostResponse"/>
+			<fault name="systemESBException" message="base:systemESBException"/>
+			<fault name="businessESBException" message="base:businessESBException"/>
+			<fault name="validationESBException" message="base:validationESBException"/>
+		</operation>
+	</portType>
+</definitions>

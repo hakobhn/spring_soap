@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2018 rel. 2 (x64) (http://www.altova.com) von ﻿IT4IPM (IT4IPM GmbH) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns="http://www.gema.de/ESB/Schema/PartnerInteract/ActivityContactMgmt/PartnerInteraction-001" xmlns:ns1="http://www.gema.de/ESB/Schema/Common/BaseTypes-001" targetNamespace="http://www.gema.de/ESB/Schema/PartnerInteract/ActivityContactMgmt/PartnerInteraction-001" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.gema.de/ESB/Schema/Common/BaseTypes-001" schemaLocation="../../Common/BaseTypes-001.xsd"/>
+	<xs:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="xmlmime.xsd"/>
+	<xs:complexType name="PlayType">
+		<xs:sequence>
+			<xs:element name="documentLink" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="eventDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="eventTimeBegin" type="xs:time" minOccurs="0"/>
+			<xs:element name="eventTimeEnd" type="xs:time" minOccurs="0"/>
+			<xs:element name="musicTypeCode" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="locationTypeCode" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="inspectionStampDescription" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="eventRoom" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="eventLocation" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="bandName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="status" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="documentDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="licenseId" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="licenseLineId" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:long">
+						<xs:totalDigits value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="licenseType">
+		<xs:sequence>
+			<xs:element name="licenseId">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="itemId" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+						<xs:pattern value="\d*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="masterDataType">
+		<xs:sequence>
+			<xs:element name="entityName">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="fieldName">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="id" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="oldValue" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="newValue">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="documentType">
+		<xs:sequence>
+			<xs:element name="archivingTypeCode" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="documentTypeCode" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="content">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="22000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="documentReferenceType">
+		<xs:sequence>
+			<xs:element name="archivingTypeCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Konstant: BUS2000223</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="documentTypeCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>bei msg Datei: ZSRANLAUFM 
+ansonsten:
+ZSRANLAUFP</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="contentReference" xmime:expectedContentTypes="application/octet-stream">
+				<xs:annotation>
+					<xs:documentation>Datei Inhalt binär</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:base64Binary">
+							<xs:attribute ref="xmime:contentType"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CRMTaskRequestType">
+		<xs:annotation>
+			<xs:documentation>Z_SST_046_WRAPPER_TASK_ARCHIVE</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="partnerId">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="categoryId" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="categoryTypeCode" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="channel" type="xs:string" minOccurs="0"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="languageCode">
+				<xs:simpleType>
+					<xs:restriction base="ns1:LanguageCodeType"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="playList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="play" type="PlayType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="licenseList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="license" type="licenseType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="masterDataList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="masterData" type="masterDataType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="statusCompletedFlag" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="documentExpiryDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="documentId" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="bundleId" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="documentList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="document" type="documentType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="incomingPostType">
+		<xs:annotation>
+			<xs:documentation>Z_SST_046_WRAPPER_TASK_ARCHIVE</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="partnerId">
+				<xs:annotation>
+					<xs:documentation>Kundennummer</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="documentId">
+				<xs:annotation>
+					<xs:documentation>doknr</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="categoryCode">
+				<xs:annotation>
+					<xs:documentation>notiz
+SOAU	-> ZA01_SA
+DPPA	-> ZA01_DP
+DPNO	-> ZA01_DN
+ZV	-> ZA01_ZA
+BERA	-> ZA01_BE_02
+BER	-> ZA01_BE
+PAU	-> ZA01_PR
+FORM	-> ZA01_FO
+REKL	-> ZA01_RE
+ANGR	-> ZA01_AR
+VAEN	-> ZA01_VA
+VETO	-> ZA01_BW
+ZV	-> ZA01_ZA
+ANGM	-> ZA01_AN
+BEHA	-> ZA01_AB
+KUEN	-> ZA01_KU
+EL	-> ZA01_AM_01
+DL	-> ZA01_AM_02
+MF	-> ZA01_MF
+PROF	-> ZA01_PO_01
+PRSO	-> ZA01_PO_02
+SEPA	-> ZA01_SE
+VTEX	-> ZA01_VE_01
+VTIN	-> ZA01_VE_02
+KMVA	-> ZA01_KL_01
+KMVU	-> ZA01_KL_02
+KMVI	-> ZA01_KL_03
+KMVG	-> ZA01_KL_04
+ABLE	-> ZA01_ABLE</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="subCategoryCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>3. Teil Eingangsweg</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="documentDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Belegdatum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="scanDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Scandatum</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="channelCode">
+				<xs:annotation>
+					<xs:documentation>1. Teil Eingangsweg
+EMAIL	-> ZP1
+SCAN	-> ZP2
+FAX	-> ZP3
+ONLINE	-> ZP4
+*	-> ZPE 
+</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ZP1"/>
+						<xs:enumeration value="ZP2"/>
+						<xs:enumeration value="ZP3"/>
+						<xs:enumeration value="ZP4"/>
+						<xs:enumeration value="ZPE"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="bundleId">
+				<xs:annotation>
+					<xs:documentation>Poststuecknr</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="languageCode">
+				<xs:annotation>
+					<xs:documentation>Konstant:DE</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="ns1:LanguageCodeType"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="instruction" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>[neues Feld] für größere Dateien</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="formular" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>2. Teil Eingangsweg</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="archiveFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Bezirk</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subject" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Betreff</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="bandName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>[neues Feld]</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="usablePlayListFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>mf_verwertbar</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nonUsablePlayListReason" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>grund-nichtverwertbar</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="deadlineFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>4. Teil Eingangsweg</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="financialRelevanceFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>5. Teil Eingangsweg</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="email" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>E_MAIL_ADRESSE</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentReferenceList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="documentReference" type="documentReferenceType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CRMTaskResponseType">
+		<xs:annotation>
+			<xs:documentation>Z_SST_046_WRAPPER_TASK_ARCHIVE</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="taskId">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="incomingPostResponseType">
+		<xs:annotation>
+			<xs:documentation>Z_SST_046_WRAPPER_TASK_ARCHIVE</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="taskId">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

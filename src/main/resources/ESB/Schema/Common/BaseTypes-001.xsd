@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2018 rel. 2 (x64) (http://www.altova.com) von ﻿IT4IPM (IT4IPM GmbH) bearbeitet -->
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Andre (Vodafone D2 GmbH) -->
+<xsd:schema xmlns="http://www.gema.de/ESB/Schema/Common/BaseTypes-001" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:base="http://www.gema.de/ESB/Schema/Common/BaseTypes-001" xmlns:prim="http://www.gema.de/ESB/Schema/Common/PrimitiveBaseTypes-001" targetNamespace="http://www.gema.de/ESB/Schema/Common/BaseTypes-001" elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.1">
+	<xsd:annotation>
+		<xsd:documentation>
+			$Id$
+
+			History of Changes:
+			Vers.	Date					Author					Comment
+			====	==========		===========		===================================================
+			0.1		2013-08-19			Andre Genser		Initial version
+			0.2		2015-02-12			Andre Genser		Added Result Details
+			0.3		2017-12-06			Christian Niehus	Added ISODate Type
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.gema.de/ESB/Schema/Common/PrimitiveBaseTypes-001" schemaLocation="PrimitiveBaseTypes-001.xsd"/>
+	<xsd:simpleType name="emailType" final="restriction">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[^@]+@[^\.]+\..+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatusType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Success"/>
+			<xsd:enumeration value="Error"/>
+			<xsd:enumeration value="Warning"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BPIDType">
+		<xsd:restriction base="prim:StringMax80"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BPNameType">
+		<xsd:restriction base="prim:StringMax100"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="CallingAppType">
+		<xsd:restriction base="prim:StringMax30"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ErrorMessageType">
+		<xsd:restriction base="prim:StringMax200"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ErrorInformationType">
+		<xsd:restriction base="prim:StringMax400"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="InitiatorType">
+		<xsd:restriction base="prim:StringMax30"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ErrorSystemType">
+		<xsd:restriction base="prim:StringMax64"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ErrorApplicationType">
+		<xsd:restriction base="prim:StringMax64"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ErrorSubsystemType">
+		<xsd:restriction base="prim:StringMax64"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ErrorTypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Validation"/>
+			<xsd:enumeration value="Business"/>
+			<xsd:enumeration value="System"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ErrorCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z]{3}\d{6}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="TraceIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>The TracedIdentifier is used to implemented a business procsess monitoring. A number of services rather its operations are involved in one business process. For this the same bpIp, bpName has to be used.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="bpId" type="base:BPIDType">
+				<xsd:annotation>
+					<xsd:documentation>Unique-Id (GUID) for each business request used to trace the business request through all participating applications; thus, must be unique across all front end applications connected to ESB.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="bpName" type="base:BPNameType">
+				<xsd:annotation>
+					<xsd:documentation>Name of the business process associated with the request</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="boId" type="base:BOIDType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Identifier for the Business-Object associated with the request (depends on type of business process; e.g. customer’s ID)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="callingApp" type="base:CallingAppType">
+				<xsd:annotation>
+					<xsd:documentation>Name of the application that calls EAI (immediate caller).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="initiator" type="base:InitiatorType">
+				<xsd:annotation>
+					<xsd:documentation>Identifier of the original initiator of the business request</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ControllObjectType">
+		<xsd:annotation>
+			<xsd:documentation>The ControlObject contains elments which controls the implementaion of an interfaces, like the backen.d timeout</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="timeOut_s" type="prim:IntMax8" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The Service Consumer overwrite the timeout of the backend call within ESB</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="transactionId" type="prim:StringMax80" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>In case backend system provides request or transactionId, service consumer can set this. Normally it is used to detect duplicatas.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ErrorDetailsType">
+		<xsd:annotation>
+			<xsd:documentation>Standard ErrorDetails element, which is derviced by all other ESB Exceptions</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="errorCode">
+				<xsd:annotation>
+					<xsd:documentation>A unique error code. The format of the error
+code is "[three digit System]xxxxxx", i.e. the 
+followed by a zero-padded unique number. Each backend has its own number cycle, to easily detect the system which causes the problem within ESB.
+The number is taken from a centrally
+administered error code excel sheet  which is stored as csv. For example ICE000001 could indicate a connection problem with ICE.
+
+</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="base:ErrorCodeType">
+						<xsd:pattern value="[A-Z]{3}\d{6}"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="errorType" type="base:ErrorTypeType" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>The type of error: Validation, Business, System</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="errorSystem" type="base:ErrorSystemType" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>The Unix Machine where error appears</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="errorMessage" type="base:ErrorMessageType">
+				<xsd:annotation>
+					<xsd:documentation>A short message describing the error. It is a constatnt error message for each errorCode.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="errorInformation" type="base:ErrorInformationType" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>A longer text describing the cause of the error
+and ways to fix the error. It contains generic information like affected customerid.
+</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="errorApplication" type="base:ErrorApplicationType" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>The application that is reporting the error, for example ICE</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="errorTimestamp" type="xsd:dateTime" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>The date and time when the error occurred.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="errorSubsystem" type="base:ErrorSubsystemType" nillable="true">
+				<xsd:annotation>
+					<xsd:documentation>The BusinessWorks Application that causes the problem.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="errorClass" type="prim:StringMax2000" nillable="true" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The BusinessWorks errorr Class, filled from Job._errorClass</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ESBException" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>Base ESB exceptinos. All other ESB exceptions has inheritf from this.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="errorDetails" type="base:ErrorDetailsType">
+				<xsd:annotation>
+					<xsd:documentation>Standard ErrorDetails</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SystemExceptionType">
+		<xsd:annotation>
+			<xsd:documentation>System Exceptions are caused by the malfunction of the system.  This may include system software, hardware failures, network failures, failed access to a point application or resource.   These types of exceptions may require system support depending on its nature</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="base:ESBException"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessExceptionType">
+		<xsd:annotation>
+			<xsd:documentation>Application/Business-level exceptions  results from the unsuccessful logical outcome of a request.  This may be due to the entity being in an invalid state Application/business-level exceptions require significantly more data to properly define the cause of the error</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="base:ESBException"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ValidationExceptionType">
+		<xsd:annotation>
+			<xsd:documentation>Validation exceptions are caused by invalid data sent to or required by the service.  This results in a data validation exception.  It may be possible for the user to fix the data and restart their operation if the user was the source of the data.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="base:ESBException"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BOIDType">
+		<xsd:annotation>
+			<xsd:documentation>Type for Business Object Id</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="name" type="prim:StringMax32">
+				<xsd:annotation>
+					<xsd:documentation>Name of the BusinessObject, e.g. CustomerId</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="value" type="prim:StringMax100">
+				<xsd:annotation>
+					<xsd:documentation>Value of the Customerid</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ResultDetailsType">
+		<xsd:sequence>
+			<xsd:element name="status" type="base:StatusType"/>
+			<xsd:element ref="base:errorDetails" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="traceIdentifier" type="base:TraceIdentifierType"/>
+	<xsd:element name="controllObject" type="base:ControllObjectType"/>
+	<xsd:element name="errorDetails" type="base:ErrorDetailsType"/>
+	<xsd:element name="systemException" type="base:SystemExceptionType">
+		<xsd:annotation>
+			<xsd:documentation>System Exceptions are caused by the malfunction of the system.  This may include system software, hardware failures, network failures, failed access to a point application or resource.   These types of exceptions may require system support depending on its nature</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="businessException" type="base:BusinessExceptionType">
+		<xsd:annotation>
+			<xsd:documentation>results from the unsuccessful logical outcome of a request.  This may be due to the entity being in an invalid state Application/business-level exceptions require significantly more data to properly define the cause of the error</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="validationException" type="base:ValidationExceptionType">
+		<xsd:annotation>
+			<xsd:documentation>Validation exceptions are caused by invalid data sent to or required by the service.  This results in a data validation exception.  It may be possible for the user to fix the data and restart their operation if the user was the source of the data.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="resultDetails" type="base:ResultDetailsType"/>
+	<xsd:simpleType name="CurrencyType">
+		<xsd:annotation>
+			<xsd:documentation>3 character ISO Currency Code</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="prim:String3">
+			<xsd:length value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CountryCodeType">
+		<xsd:annotation>
+			<xsd:documentation>ISO 3166-1 alpha-2 country code</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CountryCode2CharType">
+		<xsd:annotation>
+			<xsd:documentation>2 char country code</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="2"/>
+			<xsd:pattern value="[A-Z]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CountryCode3CharType">
+		<xsd:annotation>
+			<xsd:documentation>ISO 3166-1 alpha-3 country code</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="3"/>
+			<xsd:pattern value="[A-Z]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LanguageCodeType">
+		<xsd:annotation>
+			<xsd:documentation>ISO 639-1 languare code (Upper Case)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IBANType">
+		<xsd:annotation>
+			<xsd:documentation>IBAN (SEPA)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[a-zA-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BICType">
+		<xsd:annotation>
+			<xsd:documentation>BIC (SEPA)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="GenderType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="male"/>
+			<xsd:enumeration value="female"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ISODate">
+		<xsd:restriction base="xsd:date">
+			<xsd:maxInclusive value="9999-12-31"/>
+			<xsd:minInclusive value="0001-01-01"/>
+			<xsd:pattern value="((000[1-9])|(00[1-9][0-9])|(0[1-9][0-9]{2})|([1-9][0-9]{3}))-((0[1-9])|(1[012]))-((0[1-9])|([12][0-9])|(3[01]))"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

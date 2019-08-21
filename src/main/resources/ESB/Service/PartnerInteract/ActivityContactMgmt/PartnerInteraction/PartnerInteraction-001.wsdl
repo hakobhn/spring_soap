@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsoap="http://www.w3.org/ns/wsdl/soap" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:base="http://www.gema.de/ESB/Service/Base/BaseAbstract-001.wsdl" xmlns:tns="http://www.gema.de/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteraction-001.wsdl" xmlns:abs="http://www.gema.de/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteractionAbstract-001.wsdl" name="PartnerInteraction-001" targetNamespace="http://www.gema.de/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteraction-001.wsdl">
+	<wsdl:import namespace="http://www.gema.de/ESB/Service/Base/BaseAbstract-001.wsdl" location="../../../Base/BaseAbstract-001.wsdl"/>
+	<wsdl:import namespace="http://www.gema.de/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteractionAbstract-001.wsdl" location="PartnerInteractionAbstract-001.wsdl"/>
+	<wsdl:binding name="PartnerInteractionHttpEndpointBinding" type="abs:PartnerInteractionPortType" wsoap:version="1.1">
+		<soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="createCRMTask">
+			<soap11:operation soapAction="/PartnerInteraction-001/createCRMTask" style="document"/>
+			<wsdl:input>
+				<soap11:body parts="createCRMTaskRequest" use="literal"/>
+				<soap11:header message="base:traceIdentifier" part="TraceIdentifier" use="literal"/>
+				<soap11:header message="base:controllObject" part="ControllObject" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap11:body parts="createCRMTaskResponse" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="businessESBException">
+				<soap11:fault name="businessESBException" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="systemESBException">
+				<soap11:fault name="systemESBException" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="validationESBException">
+				<soap11:fault name="validationESBException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createIncomingPost">
+			<soap11:operation soapAction="/PartnerInteraction-001/createIncomingPost" style="document"/>
+			<wsdl:input>
+				<soap11:body parts="createIncomingPostRequest" use="literal"/>
+				<soap11:header message="base:traceIdentifier" part="TraceIdentifier" use="literal"/>
+				<soap11:header message="base:controllObject" part="ControllObject" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap11:body parts="createIncomingPostResponse" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="businessESBException">
+				<soap11:fault name="businessESBException" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="systemESBException">
+				<soap11:fault name="systemESBException" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="validationESBException">
+				<soap11:fault name="validationESBException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="PartnerInteraction">
+		<wsdl:port name="PartnerInteractionHttpEndpoint" binding="tns:PartnerInteractionHttpEndpointBinding">
+			<soap11:address location="http://localhost:8080/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteraction-001"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

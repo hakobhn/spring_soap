@@ -79,7 +79,8 @@
 							<sourceRoot>${basedir}/src/main/java</sourceRoot>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${basedir}/src/main/resources/wsdl/UploadFile.wsdl</wsdl>
+									<wsdl>${basedir}/src/main/resources/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteraction/PartnerInteraction-001.wsdl</wsdl>
+<!--									<wsdl>${basedir}/src/main/resources/wsdl/UploadFile.wsdl</wsdl>-->
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>

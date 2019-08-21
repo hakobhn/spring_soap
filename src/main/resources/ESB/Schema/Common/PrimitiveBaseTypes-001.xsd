@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.gema.de/ESB/Schema/Common/PrimitiveBaseTypes-001"
+            xmlns:prim="http://www.gema.de/ESB/Schema/Common/PrimitiveBaseTypes-001"
+            targetNamespace="http://www.gema.de/ESB/Schema/Common/PrimitiveBaseTypes-001"
+            elementFormDefault="qualified"
+            version="0.1">
+	  <xsd:simpleType name="Decimal5_2">
+		    <xsd:annotation>
+			      <xsd:documentation>Defines decimal numbers with up to two places. Allowed values are for example:
+0.00
+0.0
+0
+5.10
+5.1
+5
+5.00
+999.99</xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:decimal">
+			      <xsd:pattern value="(0|[1-9][0-9]*)(\.[0-9]{1,2})?"/>
+			      <xsd:maxInclusive value="999.99"/>
+			      <xsd:minInclusive value="0.00"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Duration">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{2}(:[0-5]\d){2}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="IntMax10">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{1,10}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="IntMax12">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{1,12}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="IntMax6">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{1,6}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="IntMax7">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{1,7}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="IntMax8">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{1,8}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="IntMax9">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{1,9}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int0..1">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="[0-1]"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int0..10">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="[0-9]|10"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int1">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{1}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int10">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{10}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int1..2">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="[1-2]"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int12">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{12}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int14">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{14}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int15">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{15}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int2">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{2}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int4">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{4}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int5">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{5}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int7">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{7}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="Int8">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:pattern value="\d{8}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NumberMax11">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:totalDigits value="11"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NumberMax2">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:totalDigits value="2"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NumberMax20">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:totalDigits value="20"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NumberMax3">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:totalDigits value="3"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NumberMax4">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:totalDigits value="4"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NumberMax5">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:totalDigits value="5"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NumberMax6">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:totalDigits value="6"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NumberMax8">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:totalDigits value="8"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="NumberMax9">
+		    <xsd:restriction base="xsd:integer">
+			      <xsd:totalDigits value="9"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax10">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,10}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax11">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,11}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax13">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,13}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax16">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,16}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax3">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,3}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax4">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,4}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax5">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,5}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax6">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,6}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax8">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,8}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringIntMax9">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1,9}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringInt1">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{1}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringInt12">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{12}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringInt14">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{14}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringInt3">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{3}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringInt5">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:pattern value="\d{5}"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax0">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="0"/>
+			      <xsd:maxLength value="0"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax10">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="10"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax100">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="100"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax11">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="11"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax12">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="12"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax128">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="128"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax13">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="13"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax1300">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="1300"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax14">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="14"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax15">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="15"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax150">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="150"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax16">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="16"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax18">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="18"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax2">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="2"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax20">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="20"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax200">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="200"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax2000">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="2000"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax24">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="24"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax25">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="25"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax255">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="255"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax256">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="256"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax26">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="26"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax260">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="260"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax27">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="27"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax3">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="3"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax30">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="30"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax300">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="300"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax32">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="32"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax34">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="34"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax35">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="35"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax4">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="4"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax40">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="40"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax400">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="400"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax45">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="45"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax5">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="5"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax50">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="50"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax500">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="500"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax512">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="512"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax6">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="6"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax60">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="60"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax60000">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="60000"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax64">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="64"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax8">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="8"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax80">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="80"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax9">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="9"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMax90">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+			      <xsd:maxLength value="90"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="StringMin1">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="1"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="String1">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:length value="1"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="String10">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="10"/>
+			      <xsd:maxLength value="10"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="String2">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:length value="2"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="String3">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:length value="3"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="String4">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="4"/>
+			      <xsd:maxLength value="4"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="String5">
+		    <xsd:restriction base="xsd:string">
+			      <xsd:minLength value="5"/>
+			      <xsd:maxLength value="5"/>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+	  <xsd:simpleType name="YesNo">
+		    <xsd:annotation>
+			      <xsd:documentation>Used as one character replacement for boolean.</xsd:documentation>
+		    </xsd:annotation>
+		    <xsd:restriction base="xsd:string">
+			      <xsd:enumeration value="Y">
+				        <xsd:annotation>
+					          <xsd:documentation>yes or true</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+			      <xsd:enumeration value="N">
+				        <xsd:annotation>
+					          <xsd:documentation>no or false</xsd:documentation>
+				        </xsd:annotation>
+			      </xsd:enumeration>
+		    </xsd:restriction>
+	  </xsd:simpleType>
+</xsd:schema>

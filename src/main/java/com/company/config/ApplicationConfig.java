@@ -2,6 +2,7 @@ package com.company.config;
 
 import javax.xml.ws.Endpoint;
 
+import de.gema.esb.service.partnerinteract.activitycontactmgmt.partnerinteraction_001_wsdl.PartnerInteraction;
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.ext.logging.LoggingFeature;
@@ -19,7 +20,8 @@ public class ApplicationConfig {
 
 	@Bean
 	public ServletRegistrationBean<CXFServlet> dispatcherServlet() {
-		return new ServletRegistrationBean<CXFServlet>(new CXFServlet(), "/service/*");
+		return new ServletRegistrationBean<CXFServlet>(new CXFServlet(),
+				"/service/*");
 	}
 	
 	@Bean
@@ -47,11 +49,20 @@ public class ApplicationConfig {
 	}
 
 	@Bean
-	public Endpoint endpoint(Bus bus, UploadService uploadServiceEndpoint) {
+	public Endpoint uplEndpoint(Bus bus, UploadService uploadServiceEndpoint) {
 
 		EndpointImpl endpoint = new EndpointImpl(bus, uploadServiceEndpoint);
 		endpoint.publish("/upload");
 		
+		return endpoint;
+	}
+
+	@Bean
+	public Endpoint interactEndpoint(Bus bus, PartnerInteraction interactServiceEndpoint) {
+
+		EndpointImpl endpoint = new EndpointImpl(bus, interactServiceEndpoint);
+		endpoint.publish("/upload");
+
 		return endpoint;
 	}
 

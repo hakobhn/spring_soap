@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:base="http://www.gema.de/ESB/Schema/Common/BaseTypes-001" name="BaseMessages" targetNamespace="http://www.gema.de/ESB/Service/Base/BaseAbstract-001.wsdl">
+    <wsdl:documentation>$Id$
+
+	Version   Date           	 Author                   	Comment
+	-----------   ---------          ---------                   ----------------------------------------------------------------------------------------------------------
+	1.0         2013-08-19	 Andre Genser		 	Version History added
+	</wsdl:documentation>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.gema.de/ESB/Schema/Common/BaseTypes-001" schemaLocation="../../Schema/Common/BaseTypes-001.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="traceIdentifier">
+        <wsdl:part element="base:traceIdentifier" name="TraceIdentifier"/>
+    </wsdl:message>
+    <wsdl:message name="controllObject">
+        <wsdl:part element="base:controllObject" name="ControllObject"/>
+    </wsdl:message>
+    <wsdl:message name="businessESBException">
+        <wsdl:part element="base:businessException" name="BusinessESBException"/>
+    </wsdl:message>
+    <wsdl:message name="validationESBException">
+        <wsdl:part element="base:validationException" name="ValidationESBException"/>
+    </wsdl:message>
+    <wsdl:message name="systemESBException">
+        <wsdl:part element="base:systemException" name="SystemESBException"/>
+    </wsdl:message>
+</wsdl:definitions>
