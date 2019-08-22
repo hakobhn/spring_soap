@@ -9,6 +9,7 @@ import org.apache.cxf.ext.logging.LoggingFeature;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.example.uploadfile.mtom.service.UploadService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletPath;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +24,7 @@ public class ApplicationConfig {
 		return new ServletRegistrationBean<CXFServlet>(new CXFServlet(),
 				"/service/*");
 	}
-	
+
 	@Bean
 	@Primary
 	public DispatcherServletPath dispatcherServletPathProvider() {
@@ -32,19 +33,19 @@ public class ApplicationConfig {
 
 	@Bean(name=Bus.DEFAULT_BUS_ID)
 	public SpringBus springBus(LoggingFeature loggingFeature) {
-		
+
 		SpringBus cxfBus = new  SpringBus();
 		cxfBus.getFeatures().add(loggingFeature);
-		
+
 		return cxfBus;
 	}
 
 	@Bean
 	public LoggingFeature loggingFeature() {
-		
+
 		LoggingFeature loggingFeature = new LoggingFeature();
 		loggingFeature.setPrettyLogging(true);
-		
+
 		return loggingFeature;
 	}
 
@@ -53,15 +54,20 @@ public class ApplicationConfig {
 
 		EndpointImpl endpoint = new EndpointImpl(bus, uploadServiceEndpoint);
 		endpoint.publish("/upload");
-		
+
 		return endpoint;
 	}
 
 	@Bean
-	public Endpoint interactEndpoint(Bus bus, PartnerInteraction interactServiceEndpoint) {
+	PartnerInteraction interactServiceEndpoint() {
+		return new PartnerInteraction();
+	}
 
-		EndpointImpl endpoint = new EndpointImpl(bus, interactServiceEndpoint);
-		endpoint.publish("/upload");
+	@Bean
+	public Endpoint interactEndpoint(Bus bus) {
+
+		EndpointImpl endpoint = new EndpointImpl(bus, interactServiceEndpoint());
+		endpoint.publish("/interact");
 
 		return endpoint;
 	}

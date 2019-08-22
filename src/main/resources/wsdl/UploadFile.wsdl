@@ -39,7 +39,7 @@
 	<wsdl:service name="UploadFile">
 		<wsdl:port binding="ups:UploadServiceSOAPBinding" name="UploadServiceSOAPPort">
 			<soap:address
-				location="http://localhost:8080/service/upload/UploadService" />
+				location="http://localhost:8090/service/upload/UploadService" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

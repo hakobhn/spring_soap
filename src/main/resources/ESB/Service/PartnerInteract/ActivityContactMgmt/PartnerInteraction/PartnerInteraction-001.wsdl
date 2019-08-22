@@ -47,7 +47,7 @@
 	</wsdl:binding>
 	<wsdl:service name="PartnerInteraction">
 		<wsdl:port name="PartnerInteractionHttpEndpoint" binding="tns:PartnerInteractionHttpEndpointBinding">
-			<soap11:address location="http://localhost:8080/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteraction-001"/>
+			<soap11:address location="http://localhost:8090/ESB/Service/PartnerInteract/ActivityContactMgmt/PartnerInteraction-001"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
