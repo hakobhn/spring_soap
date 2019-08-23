@@ -30,11 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IncomingPostType }
+     * Create an instance of {@link DocumentReferenceType }
      * 
      */
-    public IncomingPostType createIncomingPostType() {
-        return new IncomingPostType();
+    public DocumentReferenceType createDocumentReferenceType() {
+        return new DocumentReferenceType();
     }
 
     /**
@@ -46,11 +46,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DocumentReferenceType }
+     * Create an instance of {@link IncomingPostType }
      * 
      */
-    public DocumentReferenceType createDocumentReferenceType() {
-        return new DocumentReferenceType();
+    public IncomingPostType createIncomingPostType() {
+        return new IncomingPostType();
+    }
+
+    /**
+     * Create an instance of {@link IncomingPostResponseType }
+     * 
+     */
+    public IncomingPostResponseType createIncomingPostResponseType() {
+        return new IncomingPostResponseType();
+    }
+
+    /**
+     * Create an instance of {@link CRMTaskResponseType }
+     * 
+     */
+    public CRMTaskResponseType createCRMTaskResponseType() {
+        return new CRMTaskResponseType();
     }
 
     /**
@@ -86,27 +102,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CRMTaskResponseType }
+     * Create an instance of {@link DocumentReferenceType.ContentReference }
      * 
      */
-    public CRMTaskResponseType createCRMTaskResponseType() {
-        return new CRMTaskResponseType();
-    }
-
-    /**
-     * Create an instance of {@link IncomingPostResponseType }
-     * 
-     */
-    public IncomingPostResponseType createIncomingPostResponseType() {
-        return new IncomingPostResponseType();
-    }
-
-    /**
-     * Create an instance of {@link IncomingPostType.DocumentReferenceList }
-     * 
-     */
-    public IncomingPostType.DocumentReferenceList createIncomingPostTypeDocumentReferenceList() {
-        return new IncomingPostType.DocumentReferenceList();
+    public DocumentReferenceType.ContentReference createDocumentReferenceTypeContentReference() {
+        return new DocumentReferenceType.ContentReference();
     }
 
     /**
@@ -142,11 +142,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DocumentReferenceType.ContentReference }
+     * Create an instance of {@link IncomingPostType.DocumentReferenceList }
      * 
      */
-    public DocumentReferenceType.ContentReference createDocumentReferenceTypeContentReference() {
-        return new DocumentReferenceType.ContentReference();
+    public IncomingPostType.DocumentReferenceList createIncomingPostTypeDocumentReferenceList() {
+        return new IncomingPostType.DocumentReferenceList();
     }
 
 }
